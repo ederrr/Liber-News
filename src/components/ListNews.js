@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-//import {load} from '../service/acesso.api';
+import {getNews} from '../service/acesso.api';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as loadActions from './actions/Load';
@@ -16,8 +16,12 @@ class ListNews extends Component{
 			news: []
 		}
 	}
- 
+	componentDidMount(props){
+		getNews('axios').then((res) => {this.setState({news: res.data})});
+
+	}
 	render() {
+		{console.log(this.state.news)}
 		return (
 		<div>
 			<Item>
