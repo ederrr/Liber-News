@@ -41,3 +41,9 @@ export const Arrow = styled.span`
 
 	color : #009DFF;
 `;
+
+export const Menu = styled.ul`
+	overflow-y : scroll;
+	height: 500%;
+	color : #009DFF;
+`;
