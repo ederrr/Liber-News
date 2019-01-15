@@ -3,7 +3,7 @@ import {getNews} from '../service/acesso.api';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as loadActions from './actions/Load';
-import {Item,Manchete,Info,Source} from './stylesComp'
+import News from './News';
 
 
 class ListNews extends Component{
@@ -13,29 +13,18 @@ class ListNews extends Component{
 		super(props)
 		this.state = {
 			qtd: 0,
-			news: []
+			news: [],
+			show: 5
 		}
 	}
 	componentDidMount(props){
-		getNews('axios').then((res) => {this.setState({news: res.data})});
+		getNews('cnn').then((res) => {this.setState({news: res.data.articles, qtd: res.data.articles.length})});
 
 	}
 	render() {
-		{console.log(this.state.news)}
 		return (
 		<div>
-			<Item>
-				<Manchete>Manchete</Manchete>
-				<Info><p>00/00/0000</p><Source>Fonte</Source></Info>
-			</Item>
-			<Item>
-				<Manchete>Manchete</Manchete>
-				<Info><p>00/00/0000</p><Source>Fonte</Source></Info>
-			</Item><Item>
-				<Manchete>Manchete</Manchete>
-				<Info><p>00/00/0000</p><Source>Fonte</Source></Info>
-			</Item>
-			
+			{this.state.news.map((news, i) =>{return <News key={i} manchete={news.title} date={news.publishedAt} source={news.source.name}   />})}		
 		</div>
 		);
 	}

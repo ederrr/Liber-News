@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {Provider} from 'react-redux';
 import Store from './components/Store';
-import {Title,Filter,Topo,Body} from './styles';
+import {Title,Topo,Body, Button} from './styles';
 import ListNews from './components/ListNews'
+import Dropdown from './components/Dropdown';
 
 class App extends Component {
 	render() {
@@ -11,9 +12,10 @@ class App extends Component {
 				<Body>
 					<Topo>
 					<Title>Notícias</Title>
-					<Filter>Filtrar por fonte <span className="fas fa-caret-down"></span></Filter>
+					<Dropdown />
 					</Topo>
 					<ListNews />
+					<Button>Mostrar mais</Button>
 				</Body>
 			</Provider>
 		);

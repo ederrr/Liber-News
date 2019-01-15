@@ -8,8 +8,9 @@ export const Body = styled.div`
 	margin-left: 15%;
 	margin-right: 15%;
 	margin-top: 5%;
-	padding: 3%;
+	padding: 4%;
 	font-family:Helvetica;
+	border: 1px solid #DDD;
 `;
 
 export const Topo = styled.div`
@@ -17,19 +18,23 @@ export const Topo = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	color: #009DFF;
-	margin-bottom: 4%;
+	margin-bottom: 6%;
 `;
 export const Title = styled.h1`
 	
-	font-size: 1.5em;
+	font-size: 2em;
 	border-bottom: 5px solid #009DFF;
 `;
 
-export const Filter = styled.h1`
+export const Button = styled.div`
 	
-	color: #A4A4A4;
-	font-size: 1em;
-	span:{
-		color : #009DFF;
-	};
+	border-radius: 5px;
+	font-size: 0.9em;
+	text-align: center;
+	width: 20%;
+	padding-top:3px;
+	padding-bottom:3px;
+	margin-top: 8%;
+	background-color: #009DFF;
+	color: #FFF;
 `;
