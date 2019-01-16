@@ -1,7 +1,7 @@
-export function LoadNews(qtd, news){
+export function loadNews(qtd, sourceId){
 	return{
 		type: 'LOAD_NEWS',
 		qtd,
-		news
+		sourceId
 	}
 }

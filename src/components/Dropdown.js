@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {Filter, Arrow, Menu} from './stylesComp';
 import {getSource} from '../service/acesso.api';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as loadActions from './actions/Load';
 
 class Dropdown extends Component{
 
@@ -10,15 +13,15 @@ class Dropdown extends Component{
 		this.state = {
 			qtd: 0,
 			source: [],
-			sourceId: '',
+			sourceId: 'axios',
 			show: '',
 			position: 'down',
 		}
 		this.handleShow = this.handleShow.bind(this);
 	}
 	componentDidMount(props){
-		getSource().then((res) => {this.setState({source: res.data.sources, qtd: res.data.sources.length})});
-
+		this.props.loadNews(0,this.state.sourceId);
+		getSource().then((res) => {this.setState({source: res.data.sources, sourceQtd: res.data.sources.length})});
 	}
 		
 	handleShow(){
@@ -35,11 +38,12 @@ class Dropdown extends Component{
 			<div className="dropdown" onClick={this.handleShow}>
 				<Filter>Filtrar por fonte <Arrow className={`fas fa-caret-${this.state.position}`}></Arrow></Filter>
 				<Menu className={`dropdown-menu ${this.state.show}`}>
-					{this.state.source.map((s) => <li key={s.id} className="dropdown-item" onClick={()=>this.setState({sourceId: s.id})} ><p>{s.name}</p></li>)}
+					{this.state.source.map((s) => <li key={s.id} className="dropdown-item" onClick={()=>this.props.loadNews(0,s.id )} ><p>{s.name}</p></li>)}
 				</Menu>
 			</div>
 		);
 	}
 }
 
-export default Dropdown;
+const mapDispatchToProps = dispatch => bindActionCreators(loadActions, dispatch);
+export default connect(null, mapDispatchToProps)(Dropdown);
