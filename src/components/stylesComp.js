@@ -8,16 +8,18 @@ export const Item = styled.div`
 	border-bottom: 2px solid #bbb;
 `;
 
-export const Manchete = styled.h4`
+export const Manchete = styled.a`
 	color: #4E4E4E;
-	font-size: 1 em;	
-	margin-top: 1%;
+	font-size: 17pt;
+	font-weight:bold;
+	margin-top: 2%;
+	margin-bottom: 2%;
 `;
 
 export const Info = styled.div`
 	display: flex;
 	flex-direction: row;
-	color: #D8D8E4;
+	color: #A4A4A4;
 	
 `;
 export const Source = styled.p`

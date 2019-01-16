@@ -25,7 +25,7 @@ class ListNews extends Component{
 	render() {
 		return (
 		<div>
-			{this.state.news.map((news, i) =>{return <News key={i} manchete={news.title} date={news.publishedAt} source={news.source.name}   />})}
+			{this.state.news.map((news, i) =>{return <News key={i} manchete={news.title} date={news.publishedAt} source={news.source.name} url={news.url}  />})}
 			<Button onClick={this.showMore}>Mostrar mais</Button>		
 		</div>
 		);

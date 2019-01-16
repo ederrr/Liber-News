@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 
 const News = (props) => (
 	<Item>
-		<Manchete>{props.manchete}</Manchete>
+		<Manchete href={props.url}>{props.manchete}</Manchete>
 			<Info>
 			<Moment format="DD/MM/YYYY">{props.date}</Moment>
 			<Source>{props.source}</Source>
