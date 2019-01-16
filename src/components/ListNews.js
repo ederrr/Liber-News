@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {getNews} from '../service/acesso.api';
 import News from './News';
 import {connect} from 'react-redux';
+import {Button} from './stylesComp';
 
 class ListNews extends Component{
 
@@ -9,27 +10,29 @@ class ListNews extends Component{
 		super(props)
 		this.state = {
 			news: [],
-			show: 5,
-			source: 'axios'
+			qtd: 5
 		}
+		this.showMore = this.showMore.bind(this);
+	}
+	componentWillReceiveProps(nextProps){
+		getNews(nextProps.sourceId, 5).then((res) => {this.setState({news: res.data.articles, qtd: 5})});
 	}
 
-	componentWillReceiveProps(nextProps){
-		getNews(nextProps.sourceId).then((res) => {this.setState({news: res.data.articles, qtd: res.data.articles.length})});
-		
+	showMore(){
+		getNews(this.props.sourceId, this.state.qtd+5).then((res) => {this.setState({news: res.data.articles, qtd: this.state.qtd+5})});
 	}
 
 	render() {
 		return (
 		<div>
-			{this.state.news.map((news, i) =>{return <News key={i} manchete={news.title} date={news.publishedAt} source={news.source.name}   />})}		
+			{this.state.news.map((news, i) =>{return <News key={i} manchete={news.title} date={news.publishedAt} source={news.source.name}   />})}
+			<Button onClick={this.showMore}>Mostrar mais</Button>		
 		</div>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
-	qtd: state.qtd,
 	sourceId: state.sourceId
 });
 

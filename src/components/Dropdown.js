@@ -11,16 +11,15 @@ class Dropdown extends Component{
 
 		super(props)
 		this.state = {
-			qtd: 0,
 			source: [],
-			sourceId: 'axios',
+			sourceId: 'cnn',
 			show: '',
 			position: 'down',
 		}
 		this.handleShow = this.handleShow.bind(this);
 	}
 	componentDidMount(props){
-		this.props.loadNews(0,this.state.sourceId);
+		this.props.loadNews(this.state.sourceId);
 		getSource().then((res) => {this.setState({source: res.data.sources, sourceQtd: res.data.sources.length})});
 	}
 		
@@ -38,7 +37,7 @@ class Dropdown extends Component{
 			<div className="dropdown" onClick={this.handleShow}>
 				<Filter>Filtrar por fonte <Arrow className={`fas fa-caret-${this.state.position}`}></Arrow></Filter>
 				<Menu className={`dropdown-menu ${this.state.show}`}>
-					{this.state.source.map((s) => <li key={s.id} className="dropdown-item" onClick={()=>this.props.loadNews(0,s.id )} ><p>{s.name}</p></li>)}
+					{this.state.source.map((s) => <li key={s.id} className="dropdown-item" onClick={()=>this.props.loadNews(s.id )} ><p>{s.name}</p></li>)}
 				</Menu>
 			</div>
 		);

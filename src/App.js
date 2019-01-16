@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {Provider} from 'react-redux';
 import Store from './components/Store';
-import {Title,Topo,Body, Button} from './styles';
+import {Title,Topo,Body} from './styles';
 import ListNews from './components/ListNews'
 import Dropdown from './components/Dropdown';
 
 class App extends Component {
+
 	render() {
 		return (
 			<Provider store={Store}>
@@ -15,7 +16,6 @@ class App extends Component {
 					<Dropdown />
 					</Topo>
 					<ListNews />
-					<Button>Mostrar mais</Button>
 				</Body>
 			</Provider>
 		);

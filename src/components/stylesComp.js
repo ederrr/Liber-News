@@ -47,3 +47,16 @@ export const Menu = styled.ul`
 	height: 500%;
 	color : #009DFF;
 `;
+
+export const Button = styled.div`
+	
+	border-radius: 5px;
+	font-size: 0.9em;
+	text-align: center;
+	width: 20%;
+	padding-top:3px;
+	padding-bottom:3px;
+	margin-top: 8%;
+	background-color: #009DFF;
+	color: #FFF;
+`;
